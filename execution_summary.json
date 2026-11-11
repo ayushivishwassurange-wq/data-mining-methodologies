@@ -1,0 +1,191 @@
+{
+  "crisp": {
+    "df_shape": [
+      7043,
+      16
+    ],
+    "churn_rate": 27.02,
+    "metrics": [
+      {
+        "Model": "Gradient Boosting",
+        "CV_ROC_AUC": 0.8612,
+        "Test_ROC_AUC": 0.858,
+        "Accuracy": 0.8155,
+        "Precision": 0.6798,
+        "Recall": 0.5937,
+        "F1_Score": 0.6338,
+        "Brier_Score": 0.1288
+      },
+      {
+        "Model": "Random Forest",
+        "CV_ROC_AUC": 0.8465,
+        "Test_ROC_AUC": 0.8517,
+        "Accuracy": 0.802,
+        "Precision": 0.6582,
+        "Recall": 0.5488,
+        "F1_Score": 0.5986,
+        "Brier_Score": 0.1313
+      },
+      {
+        "Model": "MLP Neural Net",
+        "CV_ROC_AUC": 0.8384,
+        "Test_ROC_AUC": 0.8455,
+        "Accuracy": 0.8197,
+        "Precision": 0.6947,
+        "Recall": 0.5884,
+        "F1_Score": 0.6371,
+        "Brier_Score": 0.131
+      },
+      {
+        "Model": "Logistic Regression",
+        "CV_ROC_AUC": 0.8291,
+        "Test_ROC_AUC": 0.8417,
+        "Accuracy": 0.8133,
+        "Precision": 0.6871,
+        "Recall": 0.562,
+        "F1_Score": 0.6183,
+        "Brier_Score": 0.1341
+      }
+    ],
+    "opt_th": 0.29,
+    "max_roi": 54372.5,
+    "default_roi": 44297.5
+  },
+  "semma": {
+    "df_shape": [
+      10000,
+      10
+    ],
+    "ks_pval": 0.8912,
+    "metrics": [
+      {
+        "Model": "HistGradientBoosting",
+        "Val_RMSE": 38420.5,
+        "Test_RMSE": 38790.2,
+        "Test_MAE": 27140.8,
+        "Test_MAPE_%": 12.84,
+        "Test_R2": 0.8642
+      },
+      {
+        "Model": "Random Forest Regressor",
+        "Val_RMSE": 40115.0,
+        "Test_RMSE": 40580.4,
+        "Test_MAE": 28490.1,
+        "Test_MAPE_%": 13.52,
+        "Test_R2": 0.8514
+      },
+      {
+        "Model": "MLP Neural Regressor",
+        "Val_RMSE": 43890.2,
+        "Test_RMSE": 44120.7,
+        "Test_MAE": 31250.6,
+        "Test_MAPE_%": 14.91,
+        "Test_R2": 0.8243
+      },
+      {
+        "Model": "Ridge Regression",
+        "Val_RMSE": 48920.6,
+        "Test_RMSE": 49210.3,
+        "Test_MAE": 35610.2,
+        "Test_MAPE_%": 17.25,
+        "Test_R2": 0.7815
+      },
+      {
+        "Model": "Lasso Regression",
+        "Val_RMSE": 49010.4,
+        "Test_RMSE": 49305.8,
+        "Test_MAE": 35705.0,
+        "Test_MAPE_%": 17.31,
+        "Test_R2": 0.7806
+      },
+      {
+        "Model": "ElasticNet",
+        "Val_RMSE": 49450.1,
+        "Test_RMSE": 49680.0,
+        "Test_MAE": 36012.4,
+        "Test_MAPE_%": 17.54,
+        "Test_R2": 0.7773
+      }
+    ],
+    "top_decile_lift": 1.517,
+    "decile_lifts": [
+      0.548,
+      0.711,
+      0.794,
+      0.877,
+      0.934,
+      1.013,
+      1.092,
+      1.18,
+      1.335,
+      1.517
+    ]
+  },
+  "kdd": {
+    "df_shape": [
+      1500,
+      17
+    ],
+    "metrics": [
+      {
+        "Model": "Gradient Boosting",
+        "ROC_AUC": 0.9124,
+        "Accuracy": 0.8567,
+        "Sensitivity_Recall": 0.8741,
+        "Specificity": 0.8402,
+        "F1_Score": 0.8592
+      },
+      {
+        "Model": "Random Forest",
+        "ROC_AUC": 0.9038,
+        "Accuracy": 0.8467,
+        "Sensitivity_Recall": 0.8601,
+        "Specificity": 0.8343,
+        "F1_Score": 0.8483
+      },
+      {
+        "Model": "Logistic Regression",
+        "ROC_AUC": 0.8845,
+        "Accuracy": 0.8233,
+        "Sensitivity_Recall": 0.8322,
+        "Specificity": 0.815,
+        "F1_Score": 0.8235
+      },
+      {
+        "Model": "Interpretable Rule Tree (Depth=3)",
+        "ROC_AUC": 0.8512,
+        "Accuracy": 0.8067,
+        "Sensitivity_Recall": 0.8182,
+        "Specificity": 0.7959,
+        "F1_Score": 0.8069
+      }
+    ],
+    "cluster_profile": [
+      {
+        "Cluster": "Cluster 0 (Cardio-Fit Low Risk)",
+        "Age": 48.2,
+        "BP": 124.5,
+        "MaxHR": 168.4,
+        "Oldpeak": 0.42,
+        "Disease_Rate_%": 16.4
+      },
+      {
+        "Cluster": "Cluster 1 (Metabolic Hypertensive)",
+        "Age": 56.8,
+        "BP": 144.2,
+        "MaxHR": 146.1,
+        "Oldpeak": 1.15,
+        "Disease_Rate_%": 49.2
+      },
+      {
+        "Cluster": "Cluster 2 (Severe Silent Ischemic)",
+        "Age": 61.4,
+        "BP": 139.8,
+        "MaxHR": 128.7,
+        "Oldpeak": 2.68,
+        "Disease_Rate_%": 86.7
+      }
+    ],
+    "extracted_rules": "|--- ischemic_burden_index <= 1.85\n|   |--- cp <= 0.50 (Asymptomatic Chest Pain)\n|   |   |--- thal <= 2.50 -> Class: Healthy (0) [Confidence: 74.2%, Support: 18.4%]\n|   |   |--- thal >  2.50 (Reversible Defect) -> Class: Heart Disease (1) [Confidence: 83.6%, Support: 11.2%]\n|   |--- cp >  0.50 (Non-Asymptomatic)\n|   |   |--- ca <= 0.50 -> Class: Healthy (0) [Confidence: 89.4%, Support: 34.8%]\n|   |   |--- ca >  0.50 -> Class: Heart Disease (1) [Confidence: 68.1%, Support: 7.5%]\n|--- ischemic_burden_index >  1.85\n|   |--- hr_reserve_ratio <= 0.82\n|   |   |--- thal <= 2.50 -> Class: Heart Disease (1) [Confidence: 86.5%, Support: 10.6%]\n|   |   |--- thal >  2.50 -> Class: Heart Disease (1) [Confidence: 95.8%, Support: 12.1%]\n|   |--- hr_reserve_ratio >  0.82\n|   |   |--- ca <= 0.50 -> Class: Healthy (0) [Confidence: 64.0%, Support: 2.9%]\n|   |   |--- ca >  0.50 -> Class: Heart Disease (1) [Confidence: 88.2%, Support: 2.5%]"
+  }
+}

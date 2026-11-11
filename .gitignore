@@ -1,0 +1,4 @@
+YOUTUBE_WALKTHROUGH_GUIDE.md
+__pycache__/
+*.pyc
+.DS_Store

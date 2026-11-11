@@ -1,0 +1,14 @@
+|--- ischemic_burden_index <= 1.85
+|   |--- cp <= 0.50 (Asymptomatic Chest Pain)
+|   |   |--- thal <= 2.50 -> Class: Healthy (0) [Confidence: 74.2%, Support: 18.4%]
+|   |   |--- thal >  2.50 (Reversible Defect) -> Class: Heart Disease (1) [Confidence: 83.6%, Support: 11.2%]
+|   |--- cp >  0.50 (Non-Asymptomatic)
+|   |   |--- ca <= 0.50 -> Class: Healthy (0) [Confidence: 89.4%, Support: 34.8%]
+|   |   |--- ca >  0.50 -> Class: Heart Disease (1) [Confidence: 68.1%, Support: 7.5%]
+|--- ischemic_burden_index >  1.85
+|   |--- hr_reserve_ratio <= 0.82
+|   |   |--- thal <= 2.50 -> Class: Heart Disease (1) [Confidence: 86.5%, Support: 10.6%]
+|   |   |--- thal >  2.50 -> Class: Heart Disease (1) [Confidence: 95.8%, Support: 12.1%]
+|   |--- hr_reserve_ratio >  0.82
+|   |   |--- ca <= 0.50 -> Class: Healthy (0) [Confidence: 64.0%, Support: 2.9%]
+|   |   |--- ca >  0.50 -> Class: Heart Disease (1) [Confidence: 88.2%, Support: 2.5%]
