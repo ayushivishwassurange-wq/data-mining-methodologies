@@ -7,13 +7,15 @@
 
 ---
 
-## Quick Links — Interactive Google Colab Notebooks
+## Video Walkthrough & Interactive Google Colab Links
 
-| Methodology | Project Notebook | Google Colab Launch |
-| :--- | :--- | :--- |
-| **1. CRISP-DM** | [`CRISP-DM_Telco_Customer_Churn/CRISP_DM_Telco_Churn.ipynb`](CRISP-DM_Telco_Customer_Churn/CRISP_DM_Telco_Churn.ipynb) | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/ayushivishwassurange-wq/data-mining-methodologies/blob/main/CRISP-DM_Telco_Customer_Churn/CRISP_DM_Telco_Churn.ipynb) |
-| **2. SEMMA** | [`SEMMA_California_Housing_Valuation/SEMMA_California_Housing.ipynb`](SEMMA_California_Housing_Valuation/SEMMA_California_Housing.ipynb) | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/ayushivishwassurange-wq/data-mining-methodologies/blob/main/SEMMA_California_Housing_Valuation/SEMMA_California_Housing.ipynb) |
-| **3. KDD** | [`KDD_Heart_Disease_Knowledge_Discovery/KDD_Heart_Disease_Discovery.ipynb`](KDD_Heart_Disease_Knowledge_Discovery/KDD_Heart_Disease_Discovery.ipynb) | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/ayushivishwassurange-wq/data-mining-methodologies/blob/main/KDD_Heart_Disease_Knowledge_Discovery/KDD_Heart_Disease_Discovery.ipynb) |
+- **YouTube Code & Artifact Walkthrough Video:** [https://youtu.be/wb7e6PHCI2o](https://youtu.be/wb7e6PHCI2o)
+
+| Methodology | Project Notebook | Google Colab Launch | Medium Article Draft |
+| :--- | :--- | :--- | :--- |
+| **1. CRISP-DM** | [`CRISP-DM_Telco_Customer_Churn/CRISP_DM_Telco_Churn.ipynb`](CRISP-DM_Telco_Customer_Churn/CRISP_DM_Telco_Churn.ipynb) | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/ayushivishwassurange-wq/data-mining-methodologies/blob/main/CRISP-DM_Telco_Customer_Churn/CRISP_DM_Telco_Churn.ipynb) | [`CRISP-DM_Telco_Customer_Churn/medium_article.md`](CRISP-DM_Telco_Customer_Churn/medium_article.md) |
+| **2. SEMMA** | [`SEMMA_California_Housing_Valuation/SEMMA_California_Housing.ipynb`](SEMMA_California_Housing_Valuation/SEMMA_California_Housing.ipynb) | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/ayushivishwassurange-wq/data-mining-methodologies/blob/main/SEMMA_California_Housing_Valuation/SEMMA_California_Housing.ipynb) | [`SEMMA_California_Housing_Valuation/medium_article.md`](SEMMA_California_Housing_Valuation/medium_article.md) |
+| **3. KDD** | [`KDD_Heart_Disease_Knowledge_Discovery/KDD_Heart_Disease_Discovery.ipynb`](KDD_Heart_Disease_Knowledge_Discovery/KDD_Heart_Disease_Discovery.ipynb) | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/ayushivishwassurange-wq/data-mining-methodologies/blob/main/KDD_Heart_Disease_Knowledge_Discovery/KDD_Heart_Disease_Discovery.ipynb) | [`KDD_Heart_Disease_Knowledge_Discovery/medium_article.md`](KDD_Heart_Disease_Knowledge_Discovery/medium_article.md) |
 
 ---
 

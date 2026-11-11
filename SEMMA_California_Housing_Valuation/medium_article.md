@@ -57,14 +57,25 @@ Guided by our Stage 2 findings, we executed four targeted modifications:
 
 We trained six distinct regression architectures on the `6,000`-row Training partition and compared Validation vs. Holdout Test error:
 
-| Model Architecture | Validation RMSE ($) | Holdout Test RMSE ($) | Holdout Test MAE ($) | Holdout Test MAPE (%) | Holdout Test $R^2$ |
-| :--- | :---: | :---: | :---: | :---: | :---: |
-| **HistGradientBoosting (Champion)** | **38,420.5** | **38,790.2** | **27,140.8** | **12.84%** | **0.8642** |
-| **Random Forest Regressor** | 40,115.0 | 40,580.4 | 28,490.1 | 13.52% | 0.8514 |
-| **MLP Neural Regressor** | 43,890.2 | 44,120.7 | 31,250.6 | 14.91% | 0.8243 |
-| **Ridge Regression** | 48,920.6 | 49,210.3 | 35,610.2 | 17.25% | 0.7815 |
-| **Lasso Regression** | 49,010.4 | 49,305.8 | 35,705.0 | 17.31% | 0.7806 |
-| **ElasticNet** | 49,450.1 | 49,680.0 | 36,012.4 | 17.54% | 0.7773 |
+```text
+==========================================================================================
+Model Architecture               Val RMSE ($)   Test RMSE ($)   Test MAE ($)   MAPE    R2
+------------------------------------------------------------------------------------------
+HistGradientBoosting (Champion)     38,420.5        38,790.2       27,140.8   12.84%  0.8642
+Random Forest Regressor             40,115.0        40,580.4       28,490.1   13.52%  0.8514
+MLP Neural Regressor                43,890.2        44,120.7       31,250.6   14.91%  0.8243
+Ridge Regression                    48,920.6        49,210.3       35,610.2   17.25%  0.7815
+Lasso Regression                    49,010.4        49,305.8       35,705.0   17.31%  0.7806
+ElasticNet                          49,450.1        49,680.0       36,012.4   17.54%  0.7773
+==========================================================================================
+```
+
+- **HistGradientBoosting (Champion):** `Validation RMSE = $38,420.5` | `Holdout Test RMSE = $38,790.2` | `Test MAE = $27,140.8` | `MAPE = 12.84%` | `Test R2 = 0.8642`
+- **Random Forest Regressor:** `Validation RMSE = $40,115.0` | `Holdout Test RMSE = $40,580.4` | `Test MAE = $28,490.1` | `MAPE = 13.52%` | `Test R2 = 0.8514`
+- **MLP Neural Regressor:** `Validation RMSE = $43,890.2` | `Holdout Test RMSE = $44,120.7` | `Test MAE = $31,250.6` | `MAPE = 14.91%` | `Test R2 = 0.8243`
+- **Ridge Regression:** `Validation RMSE = $48,920.6` | `Holdout Test RMSE = $49,210.3` | `Test MAE = $35,610.2` | `MAPE = 17.25%` | `Test R2 = 0.7815`
+- **Lasso Regression:** `Validation RMSE = $49,010.4` | `Holdout Test RMSE = $49,305.8` | `Test MAE = $35,705.0` | `MAPE = 17.31%` | `Test R2 = 0.7806`
+- **ElasticNet:** `Validation RMSE = $49,450.1` | `Holdout Test RMSE = $49,680.0` | `Test MAE = $36,012.4` | `MAPE = 17.54%` | `Test R2 = 0.7773`
 
 Switching from regularized linear models (`R2 = 0.7815`) to **HistGradientBoosting** (`R2 = 0.8642`) slashed Holdout Test RMSE by more than **`$10,400` per property**.
 
@@ -84,7 +95,6 @@ The strictly monotonic climb across all 10 deciles (`[0.548, 0.711, 0.794, 0.877
 ---
 
 ### Links & Resources
-- **GitHub Subdirectory:** `SEMMA_California_Housing_Valuation/`
-- **Interactive Google Colab Notebook:** `SEMMA_California_Housing.ipynb`
-- **Next Up in Part 3:** *The KDD Process: Discovering Interpretable Clinical Knowledge Rules in Heart Disease Databases*
-
+- **YouTube Code & Artifact Walkthrough:** https://youtu.be/wb7e6PHCI2o
+- **GitHub Repository:** https://github.com/ayushivishwassurange-wq/data-mining-methodologies
+- **Interactive Google Colab Notebook:** https://colab.research.google.com/github/ayushivishwassurange-wq/data-mining-methodologies/blob/main/SEMMA_California_Housing_Valuation/SEMMA_California_Housing.ipynb

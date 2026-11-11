@@ -16,7 +16,7 @@ In this article—Part 1 of our three-part deep dive into classical data mining 
 
 Created in 1996 by a European consortium (DaimlerChrysler, SPSS, NCR), the **Cross-Industry Standard Process for Data Mining (CRISP-DM)** remains the industry gold standard for one simple reason: **it begins and ends with the business, not the algorithm.**
 
-```
+```text
 [1. Business Understanding] <---> [2. Data Understanding]
             ^                               |
             |                               v
@@ -39,10 +39,10 @@ We went back to the drawing board and established a concrete **Financial Cost-Be
 - **Customer Lifetime Value (LTV) at risk if churned:** `$650.00`
 - **Cost of a proactive retention offer (promotional credit + outreach):** `$65.00`
 - **Probability a true churner accepts the offer and stays:** `45%`
-- **Net Payoff of a True Positive (TP):** $(0.45 \times \$650) - \$65 = \mathbf{+\$227.50}$
-- **Net Cost of a False Positive (FP):** $\mathbf{-\$65.00}$ (wasted discount on a loyal customer)
+- **Net Payoff of a True Positive (TP):** `(0.45 * $650) - $65 = +$227.50`
+- **Net Cost of a False Positive (FP):** `-$65.00` (wasted discount on a loyal customer)
 
-Suddenly, our modeling objective became crystal clear: produce **well-calibrated churn probabilities** $\hat{p}_i$ and find the exact probability threshold $p^*$ that maximizes expected net dollar savings.
+Suddenly, our modeling objective became crystal clear: produce **well-calibrated churn probabilities** and find the exact probability threshold `p*` that maximizes expected net dollar savings.
 
 ---
 
@@ -87,12 +87,21 @@ Customers with a `ServiceRiskScore >= 4` exhibited a staggering **`58.6%` churn 
 
 To avoid data leakage, all imputation, scaling, and one-hot encoding were encapsulated inside a scikit-learn `ColumnTransformer` evaluated via **5-Fold Stratified Cross-Validation** on the 80% training split and tested on the 20% holdout partition (`N = 1,409`):
 
-| Model | 5-Fold CV ROC-AUC | Holdout Test ROC-AUC | Accuracy | F1-Score | Brier Score (Calibration) |
-| :--- | :---: | :---: | :---: | :---: | :---: |
-| **Gradient Boosting (Champion)** | **0.8612** | **0.8580** | 0.8155 | 0.6338 | **0.1288** |
-| **Random Forest** | 0.8465 | 0.8517 | 0.8020 | 0.5986 | 0.1313 |
-| **MLP Neural Net** | 0.8384 | 0.8455 | **0.8197** | **0.6371** | 0.1310 |
-| **Logistic Regression** | 0.8291 | 0.8417 | 0.8133 | 0.6183 | 0.1341 |
+```text
+========================================================================================
+Model                         5-Fold CV AUC   Test ROC-AUC   Accuracy   F1-Score   Brier
+----------------------------------------------------------------------------------------
+Gradient Boosting (Champion)     0.8612          0.8580       0.8155     0.6338   0.1288
+Random Forest                    0.8465          0.8517       0.8020     0.5986   0.1313
+MLP Neural Net                   0.8384          0.8455       0.8197     0.6371   0.1310
+Logistic Regression              0.8291          0.8417       0.8133     0.6183   0.1341
+========================================================================================
+```
+
+- **Gradient Boosting (Champion):** `5-Fold CV ROC-AUC = 0.8612` | `Holdout Test ROC-AUC = 0.8580` | `Accuracy = 81.55%` | `F1-Score = 0.6338` | `Brier Score = 0.1288`
+- **Random Forest:** `5-Fold CV ROC-AUC = 0.8465` | `Holdout Test ROC-AUC = 0.8517` | `Accuracy = 80.20%` | `F1-Score = 0.5986` | `Brier Score = 0.1313`
+- **MLP Neural Net:** `5-Fold CV ROC-AUC = 0.8384` | `Holdout Test ROC-AUC = 0.8455` | `Accuracy = 81.97%` | `F1-Score = 0.6371` | `Brier Score = 0.1310`
+- **Logistic Regression:** `5-Fold CV ROC-AUC = 0.8291` | `Holdout Test ROC-AUC = 0.8417` | `Accuracy = 81.33%` | `F1-Score = 0.6183` | `Brier Score = 0.1341`
 
 ![Phase 4 Model Comparison](figures/phase4_model_comparison.png)
 
@@ -114,12 +123,11 @@ When we applied our Phase 1 financial payoff equation across every threshold fro
 
 A model sitting in a Jupyter notebook generates zero ROI. For Phase 6, we packaged our pipeline into:
 1. **An interactive Streamlit Retention ROI Calculator (`deployment/app.py`)** where retention specialists input account details and immediately see the customer's churn probability, risk tier, and expected dollar ROI of sending an offer.
-2. **An automated Population Stability Index (PSI) drift monitor** that compares incoming monthly feature distributions against the training baseline and triggers an automated retraining alert whenever $\text{PSI} \ge 0.20$.
+2. **An automated Population Stability Index (PSI) drift monitor** that compares incoming monthly feature distributions against the training baseline and triggers an automated retraining alert whenever `PSI >= 0.20`.
 
 ---
 
 ### Links & Resources
-- **GitHub Repository & Full Code:** `CRISP-DM_Telco_Customer_Churn/`
-- **Interactive Google Colab Notebook:** `CRISP_DM_Telco_Churn.ipynb`
-- **Next Up in Part 2:** *Mastering SAS SEMMA for California Real Estate Valuation & Decile Lift Modeling*
-
+- **YouTube Code & Artifact Walkthrough:** https://youtu.be/wb7e6PHCI2o
+- **GitHub Repository:** https://github.com/ayushivishwassurange-wq/data-mining-methodologies
+- **Interactive Google Colab Notebook:** https://colab.research.google.com/github/ayushivishwassurange-wq/data-mining-methodologies/blob/main/CRISP-DM_Telco_Customer_Churn/CRISP_DM_Telco_Churn.ipynb

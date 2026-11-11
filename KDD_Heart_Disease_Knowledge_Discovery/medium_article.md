@@ -10,13 +10,13 @@ In 1996, Usama Fayyad, Gregory Piatetsky-Shapiro, and Padhraic Smyth published t
 
 Nowhere is this distinction more critical than in **clinical medicine**. A cardiologist cannot order an invasive coronary angiogram solely because a 200-tree `GradientBoostingClassifier` outputs `0.83`. They need **interpretable physiological rules** and **patient phenotype profiles** they can verify against human pathophysiology.
 
-In this final installment of our three-part methodology series, we apply all **5 steps of the KDD Process** (**Selection $\rightarrow$ Preprocessing $\rightarrow$ Transformation $\rightarrow$ Data Mining $\rightarrow$ Interpretation/Evaluation**) to a `1,500`-patient clinical cardiovascular database—audited at every step by a **"World-Renowned KDD Pioneer" AI Critic Persona**.
+In this final installment of our three-part methodology series, we apply all **5 steps of the KDD Process** (**Selection -> Preprocessing -> Transformation -> Data Mining -> Interpretation/Evaluation**) to a `1,500`-patient clinical cardiovascular database—audited at every step by a **"World-Renowned KDD Pioneer" AI Critic Persona**.
 
 ---
 
 ## Step 1: Selection — Stripping Away Hospital Administrative Noise
 
-Raw hospital EHR exports (`1,500` records $\times$ `17` columns) rarely arrive ready for modeling. Alongside physiological vitals, our raw table contained `patient_id`, `admin_ward_code`, and `billing_cycle_id`.
+Raw hospital EHR exports (`1,500` records x `17` columns) rarely arrive ready for modeling. Alongside physiological vitals, our raw table contained `patient_id`, `admin_ward_code`, and `billing_cycle_id`.
 
 When our initial draft fed all columns into a model, our AI Critic Persona (*"Dr. Usama Chen-Fayyad, KDD pioneer and medical informatics author"*) flagged it immediately:
 > *"Hospital ward codes and billing cycles correlate with insurance status and triage routing, creating dangerous institutional confounding. Step 1 (Selection) requires isolating strictly biological variables."*
@@ -58,8 +58,8 @@ Projecting our standardized 16-feature space onto a 2D **Principal Component Ana
 
 To satisfy our KDD Critic Persona's demand for *understandable knowledge*, we designed a three-part Data Mining stage:
 
-### 1. Unsupervised Patient Phenotyping ($k$-Means, $k=3$)
-Without looking at the diagnosis label, $k$-Means clustering discovered three natural clinical archetypes:
+### 1. Unsupervised Patient Phenotyping (K-Means, k = 3)
+Without looking at the diagnosis label, K-Means clustering discovered three natural clinical archetypes:
 - **Cluster 0 — Cardio-Fit Low Risk (`16.4%` disease):** Younger (`48.2` yrs), high chronotropic reserve (`168.4` bpm), minimal ST depression (`0.42` mm).
 - **Cluster 1 — Metabolic Hypertensive (`49.2%` disease):** Elevated resting systolic BP (`144.2` mmHg), moderate ST depression (`1.15` mm).
 - **Cluster 2 — Severe Silent Ischemic (`86.7%` disease):** Older (`61.4` yrs), blunted max heart rate (`128.7` bpm), severe ST depression (`2.68` mm).
@@ -69,12 +69,22 @@ We extracted 8 explicit clinical decision rules (`models/extracted_clinical_rule
 > **Rule #6:** `IF ischemic_burden_index > 1.85 AND hr_reserve_ratio <= 0.82 AND thal == Reversible Defect (3) THEN Heart Disease = YES [Confidence: 95.8%, Support: 12.1% of cohort]`
 
 ### 3. High-Sensitivity Ensemble Classifiers
-| Model | Holdout ROC-AUC | Accuracy | Sensitivity (Recall) | Specificity | F1-Score |
-| :--- | :---: | :---: | :---: | :---: | :---: |
-| **Gradient Boosting (Champion)** | **0.9124** | **0.8567** | **0.8741** | **0.8402** | **0.8592** |
-| **Random Forest** | 0.9038 | 0.8467 | 0.8601 | 0.8343 | 0.8483 |
-| **Logistic Regression** | 0.8845 | 0.8233 | 0.8322 | 0.8150 | 0.8235 |
-| **Interpretable Rule Tree (Depth=3)** | 0.8512 | 0.8067 | 0.8182 | 0.7959 | 0.8069 |
+
+```text
+===========================================================================================
+Model                               Holdout ROC-AUC   Accuracy   Sensitivity   Specificity
+-------------------------------------------------------------------------------------------
+Gradient Boosting (Champion)             0.9124        0.8567       0.8741        0.8402
+Random Forest                            0.9038        0.8467       0.8601        0.8343
+Logistic Regression                      0.8845        0.8233       0.8322        0.8150
+Interpretable Rule Tree (Depth=3)        0.8512        0.8067       0.8182        0.7959
+===========================================================================================
+```
+
+- **Gradient Boosting (Champion):** `ROC-AUC = 0.9124` | `Accuracy = 85.67%` | `Sensitivity (Recall) = 87.41%` | `Specificity = 84.02%` | `F1-Score = 0.8592`
+- **Random Forest:** `ROC-AUC = 0.9038` | `Accuracy = 84.67%` | `Sensitivity (Recall) = 86.01%` | `Specificity = 83.43%` | `F1-Score = 0.8483`
+- **Logistic Regression:** `ROC-AUC = 0.8845` | `Accuracy = 82.33%` | `Sensitivity (Recall) = 83.22%` | `Specificity = 81.50%` | `F1-Score = 0.8235`
+- **Interpretable Rule Tree (Depth=3):** `ROC-AUC = 0.8512` | `Accuracy = 80.67%` | `Sensitivity (Recall) = 81.82%` | `Specificity = 79.59%` | `F1-Score = 0.8069`
 
 ---
 
@@ -88,8 +98,7 @@ By pairing our calibrated **Gradient Boosting** model (`ROC-AUC = 0.9124`) with 
 
 ---
 
-### Summary: Comparing CRISP-DM, SEMMA, and KDD
-- **Use CRISP-DM** when your project is driven by **business ROI, dollar cost matrices, and production MLOps deployment**.
-- **Use SEMMA** when working with large tabular datasets requiring **strict 3-way sampling, collinearity modification, and decile lift ranking**.
-- **Use KDD** when your primary deliverable is **interpretable scientific or clinical knowledge discovery** rather than a black-box prediction.
-
+### Links & Resources
+- **YouTube Code & Artifact Walkthrough:** https://youtu.be/wb7e6PHCI2o
+- **GitHub Repository:** https://github.com/ayushivishwassurange-wq/data-mining-methodologies
+- **Interactive Google Colab Notebook:** https://colab.research.google.com/github/ayushivishwassurange-wq/data-mining-methodologies/blob/main/KDD_Heart_Disease_Knowledge_Discovery/KDD_Heart_Disease_Discovery.ipynb
